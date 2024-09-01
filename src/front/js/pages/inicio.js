@@ -1,8 +1,6 @@
 
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
-import imgInicio1 from "../../img/img1.jpg"
-import imgInicio2 from "../../img/img2.jpg"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 

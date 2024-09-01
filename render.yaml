@@ -43,10 +43,6 @@ services:
         value: "False"
       - key: MAIL_DEFAULT_SENDER
         value: hablemosuysaludmental@gmail.com
-      - key: BACKEND_URL
-        value: https://musical-goggles-wr79qx54j56gcgvx4-3001.app.github.dev/api
-      - key: FRONTEND_URL
-        value: https://musical-goggles-wr79qx54j56gcgvx4-3000.app.github.dev
 
 databases: # Render PostgreSQL database
     - name: postgresql-trapezoidal-42170

@@ -10,7 +10,7 @@ services:
       startCommand: "gunicorn wsgi --chdir ./src/"
       plan: free # optional; defaults to starter
       numInstances: 1
-       envVars:
+      envVars:
       - key: BASENAME
         value: /
       - key: FLASK_APP

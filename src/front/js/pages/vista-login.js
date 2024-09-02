@@ -11,6 +11,8 @@ const VistaLogin = () => {
         const token = localStorage.getItem("token");
         if (token) {
             navigate("/perfil");
+        }else{
+            navigate("/vista-login");
         }
     }, [navigate]);
 

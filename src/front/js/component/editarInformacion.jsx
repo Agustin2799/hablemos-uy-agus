@@ -11,7 +11,6 @@ const EditarInformacion = ({perfil,setPerfil}) => {
     const [descripcion, setDescripcion] = useState('');
     const [telefono, setTelefono] = useState('');
     const [codigoArea, setCodigoArea] = useState('');
-    const [fechaNacimiento, setFechaNacimiento] = useState('');
 
     // Establecer valores cuando perfil esté disponible
     useEffect(() => {
@@ -21,7 +20,6 @@ const EditarInformacion = ({perfil,setPerfil}) => {
             setDescripcion(perfil.descripcion || '');
             setTelefono(perfil.telefono || '');
             setCodigoArea(perfil.codigo_de_area || '');
-            setFechaNacimiento(perfil.fecha_de_nacimiento || '')
         }
     }, [perfil]);
 
@@ -29,17 +27,17 @@ const EditarInformacion = ({perfil,setPerfil}) => {
         e.preventDefault();
         // Aquí puedes manejar el envío del formulario,
         // posiblemente llamando a una acción de 'actions' para actualizar el store
-        console.log(nombre, apellido, descripcion, telefono, codigoArea, fechaNacimiento)
-        console.log(perfil)
-       const result = await actions.editarPerfil(nombre, apellido, descripcion, telefono, codigoArea, fechaNacimiento)
-        if (result){
+        // console.log(nombre, apellido, descripcion, telefono, codigoArea)
+        // console.log(perfil)
+       const result = await actions.editarPerfil(nombre, apellido, descripcion, telefono, codigoArea)
+        // console.log(result)
+       if (result){
             setPerfil({...perfil, 
                 nombre_usuario:nombre,
                 apellido:apellido,
                 descripcion:descripcion,
                 telefono:telefono,
-                codigo_de_area:codigoArea,
-                fechaNacimiento:fechaNacimiento
+                codigo_de_area:codigoArea
             })
             Swal.fire({
 				title: 'Tu información fue modificada',

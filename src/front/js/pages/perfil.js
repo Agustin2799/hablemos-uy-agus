@@ -10,6 +10,7 @@ import MercadoPagoComponent from "../component/MercadoPago.jsx";
 import Swal from 'sweetalert2'
 import Meets from "../component/meets.jsx";
 import EditarInformacion from "../component/editarInformacion.jsx";
+
 // ID cliente: RrLt2R0t0jbTXChSFJLFIPaSMniKYriRIi6kxAszsWA
 // Secreto de cliente: qdg4iNfaJf7ihnst8Ln4rbtDP3DTBLXl7Q6ZOmC9g_g
 // Clave de firma WebHook: wxCO2fVy0HgDGrihAZuw4y8pZWunAu27OS5ghje2_M8
@@ -21,6 +22,7 @@ const Perfil = () => {
     const [perfil, setPerfil] = useState({});
     const navigate = useNavigate();
     const { id } = useParams();
+
     useEffect(() => {
         // Lógica para cargar el perfil primero desde el store si está disponible
         if (store.dataUser) {
@@ -51,11 +53,9 @@ const Perfil = () => {
         });
     }, []);
 
-    useEffect(()=>{
-        console.log(perfil)
-    },[perfil])
-
-
+    // useEffect(()=>{
+    //     console.log(perfil)
+    // },[perfil])
 
     const [showModal, setShowModal] = useState(false);
     // const [selectedEspecialidades, setSelectedEspecialidades] = useState([]);

@@ -57,7 +57,7 @@ const Perfil = () => {
     useEffect(() => {
         // console.log('detecté el cambio de img en perfil')
         setPerfil({ ...store.dataUser, foto: store.imagenURL })
-        actions.getPerfilUsuario(id)
+        //actions.getPerfilUsuario(id)
     }, [store.imagenURL])
 
     const [showModal, setShowModal] = useState(false);

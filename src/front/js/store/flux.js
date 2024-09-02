@@ -95,10 +95,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// Realiza una solicitud a la API de Calendly para obtener los eventos programados.
 					const response = await fetch(uriHablemosUy, options);
 					const data = await response.json();
-
+					console.log(namePsicologo, response.status, data)
 					// Filtra los eventos para obtener solo aquellos que coinciden con el nombre del psicólogo y que no estén cancelados.
-					const events = data.collection.filter((event) => event.name === namePsicologo && event.status !== 'canceled');
-
+					const events = data.collection.filter((event) => (event.name === namePsicologo || (`Dr. ${event.name}` || `Dra. ${event.name}` || event.name))  && event.status !== 'canceled');
+					console.log('events', events)
 					const dataMeetsPsicologos = []; // Array para almacenar los datos de los eventos con los pacientes.
 
 					// Itera sobre cada evento filtrado.
@@ -124,6 +124,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							}
 						})();
 					}
+					console.log(dataMeetsPsicologos)
 
 					// Actualiza el store con los datos de los eventos y pacientes obtenidos.
 					setStore({ meets: dataMeetsPsicologos });

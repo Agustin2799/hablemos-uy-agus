@@ -14,24 +14,34 @@ const VistaModal = ({ show, onClose, imageSrc }) => {
 
     const handleDeleteClick = () => {
         setProfileImage(defaultAvatar);
-        actions.saveProfileImg(null);
+        actions.saveProfileImg(defaultAvatar);
     };
 
     const handleSave = async () => {
-        const cloud_name = 'dooy3klb6'; // Reemplaza con tu nombre de cloud
-        if (profileImage) {
-            if (store.dataUser && store.dataUser.correo) {
-                const response = await actions.uploadImage(file, cloud_name);
-                if (response) {
+    const cloud_name = 'dooy3klb6';
+    if (profileImage) {
+        if (store.dataUser && store.dataUser.correo) {
+            const response = await actions.uploadImage(file, cloud_name);
+           // console.log('response de actions.uploadImage()', response);
+            if (response) {
+                if (response !== profileImage) {
+                    //console.log('Actualizando la imagen de perfil');
                     setProfileImage(response);
+                } else {
+                    //console.log('La imagen de perfil no ha cambiado');
                 }
-            } else {
-                console.error("User Correo is undefined or null.");
             }
         } else {
-            console.error("No hay una imagen seleccionada para guardar.");
+            console.error("User Correo is undefined or null.");
         }
-    };
+    } else {
+        console.error("No hay una imagen seleccionada para guardar.");
+    }
+};
+
+useEffect(() => {
+    //console.log('Cambió la img', profileImage);
+}, [profileImage]);
 
     if (!show) return null;
 

@@ -153,9 +153,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// Realiza una solicitud a la API de Calendly para obtener los eventos del usuario específico por su email.
 					const response = await fetch(uriHablemosUy, options);
 					const data = await response.json();
+					//console.log('meets del user', data.collection)
+					// Filtra los eventos para obtener solo aquellos que coinciden con el nombre del psicólogo y que no estén cancelados.
+					//const events = data.collection.filter((event) => event.name === namePsicologo && event.status !== 'canceled');
 
 					// Actualiza el store con los datos de los eventos del usuario.
-					setStore({ meets: data.collection });
+					setStore({ meets: data.collection.filter(meet => meet.status !== 'canceled') });
 
 				} catch (error) {
 					console.error('Error consiguiendo las meets del usuario:', error); // Maneja errores durante la solicitud de eventos.
@@ -537,13 +540,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (fileData.secure_url) {
 					const result = await actions.saveProfileImg(fileData.secure_url)
 					if (result) {
+						console.log(result)
+						setStore({imagenURL: result})
 						return result
 					}
 					return false
 				}
 			},
 			saveProfileImg: async (url) => {
-
+				
+				
+					
 				const store = getStore()
 				const updateResponse = await fetch(process.env.BACKEND_URL + `/usuario/foto`, {
 					method: 'PUT',
@@ -557,7 +564,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					throw new Error('Error al actualizar la foto de perfil en la base de datos');
 				}
 				setStore({ dataUser: { ...store.dataUser, foto: url } })
+				setStore({imagenURL: url})
 				return url
+				
 			},
 			fetchEspecialidades: async () => {
 				const store = getStore();  // Obtén el estado actual

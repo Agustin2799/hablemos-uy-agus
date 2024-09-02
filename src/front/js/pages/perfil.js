@@ -45,6 +45,7 @@ const Perfil = () => {
             });
         }
 
+
         actions.fetchEspecialidades();
 
         // Inicializar los popovers de Bootstrap
@@ -53,9 +54,11 @@ const Perfil = () => {
         });
     }, []);
 
-    // useEffect(()=>{
-    //     console.log(perfil)
-    // },[perfil])
+    useEffect(()=>{
+       // console.log('detecté el cambio de img en perfil')
+        setPerfil({...store.dataUser , foto: store.imagenURL})
+    //actions.getPerfilUsuario(id)
+    },[store.imagenURL])
 
     const [showModal, setShowModal] = useState(false);
     // const [selectedEspecialidades, setSelectedEspecialidades] = useState([]);

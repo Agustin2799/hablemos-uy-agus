@@ -200,6 +200,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						localStorage.setItem('refresh_token', data.refresh_token); // Guarda el refresh token
 						setStore({ dataUser: data.user });
 						setStore({ logged: true });
+						actions.getPsicologos()
 
 						return true;
 					} else if (response.status === 400) {

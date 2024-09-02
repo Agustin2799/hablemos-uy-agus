@@ -40,7 +40,7 @@ export const Login = () => {
 				if (success) {
 					Swal.fire({
 						title: 'Verificación exitosa',
-						text: message,
+						text: 'Verificaste tu cuenta correctamente.',
 						icon: 'success',
 						timer: 4000
 					});

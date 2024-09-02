@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Context } from '../store/appContext';
+import Swal from 'sweetalert2';
 
 
 const EditarInformacion = ({perfil,setPerfil}) => {
@@ -40,6 +41,11 @@ const EditarInformacion = ({perfil,setPerfil}) => {
                 codigo_de_area:codigoArea,
                 fechaNacimiento:fechaNacimiento
             })
+            Swal.fire({
+				title: 'Tu información fue modificada',
+				icon: 'success',
+				timer: 4000
+			});
         }
     };
 

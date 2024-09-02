@@ -9,47 +9,47 @@ const psicologos = [
     {
         img: "https://media.licdn.com/dms/image/C5603AQEf2PH1Z6jMaQ/profile-displayphoto-shrink_800_800/0/1542835716681?e=2147483647&v=beta&t=UStaIdaLcPXslHpqfUExnhZpPCiFlveK6_Xf60asB2w",
         nombre: "Juan Pérez",
-        especialidades: ["Psicología Clínica", "Terapia Cognitivo-Conductual"],
-        descripcion: "Juan Pérez tiene más de 15 años de experiencia en psicología clínica y es experto en terapia cognitivo-conductual. Ha ayudado a numerosos pacientes a superar trastornos de ansiedad y depresión.",
+        especialidades: ["Sexología", "Psicología del Deporte", "Psicología Educativa", "Psicología Social", "Terapia Cognitivo-Conductual", "Psicología Clínica"],
+        descripcion: "Juan Pérez es un psicólogo clínico con amplia experiencia en terapia cognitivo-conductual, ayudando a pacientes a superar trastornos de ansiedad y depresión.",
         calificacion: 4.8,
     },
     {
         img: "https://th.bing.com/th/id/OIP.3pTvuODk4tohlb2GjXzhUQHaGv?rs=1&pid=ImgDetMain",
         nombre: "María García",
-        especialidades: ["Psicología Infantil", "Terapia Familiar"],
-        descripcion: "María García se especializa en psicología infantil y terapia familiar. Con su enfoque comprensivo y empático, ha trabajado con familias para mejorar la comunicación y resolver conflictos.",
+        especialidades: ["Psicología Organizacional", "Terapia Familiar", "Terapia de Pareja", "Sexología", "Psicoanálisis", "Intervención en Crisis"],
+        descripcion: "María García trabaja con familias y parejas, ayudándolas a mejorar la comunicación y resolver conflictos de manera efectiva.",
         calificacion: 4.7,
-
     },
     {
         img: "https://th.bing.com/th/id/OIP.7kRUafV2fWsF8wi1zH_CewHaE8?w=1500&h=1000&rs=1&pid=ImgDetMain",
         nombre: "Luis Rodríguez",
-        especialidades: ["Psicología Organizacional", "Coaching"],
-        descripcion: "Luis Rodríguez es un psicólogo organizacional y coach certificado. Ayuda a las empresas a mejorar el rendimiento de sus empleados y a desarrollar líderes efectivos.",
+        especialidades: ["Psicología Organizacional", "Coaching", "Psicología Clínica", "Terapia Cognitivo-Conductual", "Terapia Familiar", "Terapia Infantil"],
+        descripcion: "Luis Rodríguez es un experto en psicología organizacional y coaching, ayudando a mejorar el rendimiento en empresas y el desarrollo de líderes.",
         calificacion: 4.9,
     },
     {
         img: "https://media.licdn.com/dms/image/C4D03AQG6bwvCYAJucQ/profile-displayphoto-shrink_800_800/0/1619111773727?e=2147483647&v=beta&t=4YsQKaZyBsL-csV5ud1Pm8M5tqienkoe_dEvHhNNUwI",
         nombre: "Ana Martínez",
-        especialidades: ["Psicología Forense", "Evaluaciones Psicológicas"],
-        descripcion: "Ana Martínez es especialista en psicología forense y realiza evaluaciones psicológicas para casos legales. Su conocimiento en el campo forense es ampliamente reconocido.",
+        especialidades: ["Psicología Organizacional", "Coaching", "Psicología Forense", "Terapia de Pareja", "Terapia Familiar", "Psicología Educativa"],
+        descripcion: "Ana Martínez es especialista en psicología forense y realiza evaluaciones psicológicas para casos legales.",
         calificacion: 3.6,
-
     },
     {
         img: "https://th.bing.com/th/id/OIP.ZqIS8QmJFXUBUT1j292aegHaHa?w=530&h=530&rs=1&pid=ImgDetMain",
         nombre: "Carlos Gómez",
-        especialidades: ["Terapia de Pareja", "Sexología"],
-        descripcion: "Carlos Gómez se especializa en terapia de pareja y sexología. Ha ayudado a muchas parejas a mejorar su relación y resolver problemas sexuales.",
+        especialidades: ["Intervención en Crisis", "Psicoanálisis", "Psicología Social", "Coaching", "Terapia Familiar"],
+        descripcion: "Carlos Gómez se especializa en intervención en crisis y terapia familiar, apoyando a individuos en momentos de gran estrés.",
         calificacion: 4.5,
     }
 ];
+
+
 
 const SimpleCarousel = () => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 2500,
+        speed: 2000,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
@@ -70,10 +70,10 @@ const SimpleCarousel = () => {
                                     <div className="col-md-4">
                                         <img
                                             src={elm.img == null ? defaultAvatar : elm.img }
-                                            className="img-fluid rounded-start"
+                                            className="img-fluid rounded-top rounded-md-start"
                                             alt={elm.nombre}
                                             style={{
-                                                height: '300px',
+                                                minHeight: '300px',
                                                 width: '100%',
                                                 objectFit: 'cover',
                                                 objectPosition: 'center'

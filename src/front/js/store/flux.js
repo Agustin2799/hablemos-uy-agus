@@ -247,7 +247,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (response.ok) {
 
 
-
+						await setStore({imagenURL: data.foto})
 						return data;
 
 					} else {

@@ -41,46 +41,52 @@ const Meets = () => {
 
     return (
         <div>
-            {sortedMeets && sortedMeets.map((event, index) => {
-                const startTime = new Date(event.start_time);
-                const currentTime = new Date();
-                const isPending = startTime > currentTime;
-
-                return (
-                    <div key={index} className="card mb-4" style={{ width: '100%' }}>
-                        <div className="row g-0">
-                            {/* Columna 1: Nombre y Etiqueta */}
-                            <div className={`col-md-${isPending ? '7' : '12'} col-12 d-flex align-items-center`}>
-                                <div className="card-body p-0 m-2 d-flex flex-column align-items-center justify-content-center">
-                                    <h5 className="card-title mb-1 text-center">{event.name}</h5>
-                                    <span
-                                        className={`badge ${isPending ? 'bg-success' : 'bg-secondary'} text-uppercase`}
-                                    >
-                                        {isPending ? 'Pendiente' : 'Completada'}
-                                    </span>
-                                    <p className="card-text mb-1 text-center">
-                                        Duración: {(new Date(event.end_time) - new Date(event.start_time)) / (1000 * 60)} minutos
-                                    </p>
-                                    <p className="card-text text-center">
-                                        Inicio: {startTime.toLocaleString()}
-                                    </p>
+            {sortedMeets && sortedMeets.length > 0 ? (
+                sortedMeets.map((event, index) => {
+                    const startTime = new Date(event.start_time);
+                    const currentTime = new Date();
+                    const isPending = startTime > currentTime;
+    
+                    return (
+                        <div key={index} className="card mb-4" style={{ width: '100%' }}>
+                            <div className="row g-0">
+                                {/* Columna 1: Nombre y Etiqueta */}
+                                <div className={`col-md-${isPending ? '7' : '12'} col-12 d-flex align-items-center`}>
+                                    <div className="card-body p-0 m-2 d-flex flex-column align-items-center justify-content-center">
+                                        <h5 className="card-title mb-1 text-center">{event.name}</h5>
+                                        <span
+                                            className={`badge ${isPending ? 'bg-success' : 'bg-secondary'} text-uppercase`}
+                                        >
+                                            {isPending ? 'Pendiente' : 'Completada'}
+                                        </span>
+                                        <p className="card-text mb-1 text-center">
+                                            Duración: {(new Date(event.end_time) - new Date(event.start_time)) / (1000 * 60)} minutos
+                                        </p>
+                                        <p className="card-text text-center">
+                                            Inicio: {startTime.toLocaleString()}
+                                        </p>
+                                    </div>
                                 </div>
+    
+                                {/* Columna 2: Duración y Inicio */}
+    
+                                {/* Columna 3: Botón */}
+                                {isPending &&
+                                    <div className="col-md-5 col-12 my-3 my-lg-auto d-flex align-items-center justify-content-center">
+                                        <a href={event.location.join_url} target="_blanck" className="btn btn-meet mx-2">
+                                            <i className="fa-solid fa-video me-2"></i> Unirse a la reunión
+                                        </a>
+                                    </div>
+                                }
                             </div>
-
-                            {/* Columna 2: Duración y Inicio */}
-
-                            {/* Columna 3: Botón */}
-                            {isPending &&
-                                <div className="col-md-5 col-12 my-3 my-lg-auto d-flex align-items-center justify-content-center">
-                                    <a href={event.location.join_url} target="_blanck" className="btn btn-meet mx-2">
-                                        <i className="fa-solid fa-video me-2"></i> Unirse a la reunión
-                                    </a>
-                                </div>
-                            }
                         </div>
-                    </div>
-                );
-            })}
+                    )
+                })
+            ) : (
+                <div className="text-center text-inicio mt-4">
+                    <h4>No hay sesiones agendadas aún.</h4>
+                </div>
+            )}
         </div>
     );
 };

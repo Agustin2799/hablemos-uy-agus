@@ -54,11 +54,11 @@ const Perfil = () => {
         });
     }, []);
 
-    useEffect(()=>{
-       // console.log('detecté el cambio de img en perfil')
-        setPerfil({...store.dataUser , foto: store.imagenURL})
-    //actions.getPerfilUsuario(id)
-    },[store.imagenURL])
+    useEffect(() => {
+        // console.log('detecté el cambio de img en perfil')
+        setPerfil({ ...store.dataUser, foto: store.imagenURL })
+        actions.getPerfilUsuario(id)
+    }, [store.imagenURL])
 
     const [showModal, setShowModal] = useState(false);
     // const [selectedEspecialidades, setSelectedEspecialidades] = useState([]);
@@ -94,8 +94,8 @@ const Perfil = () => {
     // Mostrar las especialidades ya guardadas para el usuario
     // const userEspecialidades = perfil?.especialidades || [];
 
-   
-    
+
+
 
 
 
@@ -143,7 +143,7 @@ const Perfil = () => {
                             : <Loader width="300px" height="35px" />}
                     </h2>
                     <div className="personal-info text-start mt-3 mb-2">
-                       
+
                         <div className="d-flex align-items-center">
                             <strong className="text-inicio me-2">Email: </strong>
                             {perfil?.correo
@@ -153,7 +153,7 @@ const Perfil = () => {
                         <div className="d-flex align-items-center">
                             <strong className="text-inicio me-2">Teléfono: </strong>
                             {perfil?.telefono
-                                ? `${perfil?.codigo_de_area} ${perfil.telefono}` 
+                                ? `${perfil?.codigo_de_area} ${perfil.telefono}`
                                 : perfil && !perfil.telefono ? 'Telefono no disponible' : <Loader width="200px" height="15px" />}
                         </div>
                         {perfil && perfil.is_psicologo && (
@@ -174,9 +174,9 @@ const Perfil = () => {
                         <div className="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <button className="nav-link active nav-perfil" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">{perfil && perfil.is_psicologo ? 'Agendas de pacientes' : 'Mis agendas'}</button>
                             <button className="nav-link nav-perfil" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Métodos de pago</button>
-                            {perfil && perfil.is_psicologo ==true ? (
+                            {perfil && perfil.is_psicologo == true ? (
                                 <button className="nav-link nav-perfil" id="v-pills-especialidad-tab" data-bs-toggle="pill" data-bs-target="#v-pills-especialidad" type="button" role="tab" aria-controls="v-pills-especialidad" aria-selected="false">Mis especialidades</button>
-                            ) : perfil.is_psicologo==false && (
+                            ) : perfil.is_psicologo == false && (
                                 <button className="nav-link nav-perfil" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Solicitud de perfil profesional</button>
                             )
                             }
@@ -192,7 +192,7 @@ const Perfil = () => {
                                 <Meets />
                             </div>
                             <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                <MercadoPagoComponent/>
+                                <MercadoPagoComponent />
                             </div>
                             <div className="tab-pane fade" id="v-pills-especialidad" role="tabpanel" aria-labelledby="v-pills-especialidad-tab">
                                 <h4>Especialidades</h4>
@@ -254,7 +254,7 @@ const Perfil = () => {
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
     );
 };
 

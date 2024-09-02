@@ -87,7 +87,7 @@ const Profesionales = () => {
               <div className="col-12 col-lg-5">
                 <img
                   src={elm.foto == null ? defaultAvatar : elm.foto}
-                  className="img-fluid rounded-top rounded-lg-start"
+                  className="img-fluid rounded-start"
                   alt={elm.nombre}
                   style={{
                     height: '100%',

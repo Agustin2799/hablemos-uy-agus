@@ -70,7 +70,7 @@ const SimpleCarousel = () => {
                                     <div className="col-md-4">
                                         <img
                                             src={elm.img == null ? defaultAvatar : elm.img }
-                                            className="img-fluid rounded-top rounded-md-start"
+                                            className="img-fluid rounded-start"
                                             alt={elm.nombre}
                                             style={{
                                                 minHeight: '300px',

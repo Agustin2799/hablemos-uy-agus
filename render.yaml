@@ -45,6 +45,8 @@ services:
         value: hablemosuysaludmental@gmail.com
       - key: BACKEND_URL
         value: https://hablemosuy-salud-mental.onrender.com/api
+      - key: FRONTEND_URL
+        value: https://hablemosuy-salud-mental.onrender.com
 
 databases: # Render PostgreSQL database
     - name: postgresql-trapezoidal-42170

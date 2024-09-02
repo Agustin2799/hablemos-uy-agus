@@ -44,7 +44,7 @@ services:
       - key: MAIL_DEFAULT_SENDER
         value: hablemosuysaludmental@gmail.com
       - key: BACKEND_URL
-        value: https://hablemosuy-salud-mental.onrender.com
+        value: https://hablemosuy-salud-mental.onrender.com/api
 
 databases: # Render PostgreSQL database
     - name: postgresql-trapezoidal-42170

@@ -1,19 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from '../store/appContext'
-import ReactStars from 'react-rating-stars-component';
 import Swal from 'sweetalert2'
 import defaultAvatar from "../../img/avatar.jpg";
 
-
-
 const Profesionales = () => {
-  const { store, actions } = useContext(Context)
-  const navigate = useNavigate()
-
+  const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    //  actions.obtenerEspecialidadesPorProfesional();
     // Cargar el script de Calendly
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
@@ -21,62 +16,64 @@ const Profesionales = () => {
     document.body.appendChild(script);
 
     const checkLoggedStatus = async () => {
-      //  await actions.obtenerEspecialidadesPorProfesional();
       try {
-        const logged = await actions.validToken(); // Esperar a que la promesa se resuelva
-
+        const logged = await actions.validToken();
         if (!logged) {
           Swal.fire({
             title: 'Sesión expirada',
             text: 'Debes logearte nuevamente',
             icon: 'error',
             timer: 4000
-          })
+          });
           navigate('/vista-login');
         }
       } catch (error) {
         console.error('Error al validar token:', error);
-        navigate('/vista-login'); // Redirigir en caso de error
+        navigate('/vista-login');
       }
     };
 
     checkLoggedStatus();
 
     return () => {
-      // Limpiar el script al desmontar el componente
       document.body.removeChild(script);
     };
-  }, []);
+  }, [actions, navigate]);
 
   useEffect(() => {
-    // actions.getPsicologos()
     actions.obtenerEspecialidadesPorProfesional();
+  }, [store.psicologos, actions]);
 
-  }, [store.psicologos])
   const openCalendly = (profesional) => {
+    let url = '';
 
     switch (profesional) {
       case 'Juan Pérez':
-        Calendly.showPopupWidget('https://calendly.com/hablemosuy1234/dr-juan-perez');
+        url = 'https://calendly.com/hablemosuy1234/dr-juan-perez';
         break;
       case 'Luis Rodríguez':
-        Calendly.showPopupWidget('https://calendly.com/hablemosuy1234/dr-luis-rodriguez');
+        url = 'https://calendly.com/hablemosuy1234/dr-luis-rodriguez';
         break;
       case 'María García':
-        Calendly.showPopupWidget('https://calendly.com/hablemosuy1234/dra-maria-garcia');
+        url = 'https://calendly.com/hablemosuy1234/dra-maria-garcia';
         break;
       case 'Ana Martínez':
-        Calendly.showPopupWidget('https://calendly.com/hablemosuy1234/dra-ana-martinez');
+        url = 'https://calendly.com/hablemosuy1234/dra-ana-martinez';
         break;
       case 'Carlos Gómez':
-        Calendly.showPopupWidget('https://calendly.com/hablemosuy1234/dr-carlos-gomez');
+        url = 'https://calendly.com/hablemosuy1234/dr-carlos-gomez';
         break;
       default:
         break;
     }
-    actions.getMeetsUser(store.dataUser.correo)
-  };
 
+    if (url) {
+      const fullUrl = `${url}?background_color=f4f2ee&text_color=350436&primary_color=350436`;
+      Calendly.showPopupWidget(fullUrl);
+    }
+
+    actions.getMeetsUser(store.dataUser.correo);
+  };
 
   return (
     <div className="mt-5">
@@ -108,7 +105,7 @@ const Profesionales = () => {
                         </li>
                       ))
                     ) : (
-                      <li className="especialidad-tag" >No hay especialidades disponibles.</li>
+                      <li className="especialidad-tag">No hay especialidades disponibles.</li>
                     )}
                   </ul>
                   <p className="card-text text-inicio">
@@ -116,7 +113,6 @@ const Profesionales = () => {
                   </p>
                 </div>
                 <div className="mt-auto d-flex justify-content-end">
-
                   <button
                     type="button"
                     onClick={() => openCalendly(`${elm.nombre_usuario} ${elm.apellido}`)}
@@ -124,7 +120,6 @@ const Profesionales = () => {
                   >
                     Reservar agenda
                   </button>
-
                 </div>
               </div>
             </div>
@@ -132,8 +127,7 @@ const Profesionales = () => {
         </div>
       ))}
     </div>
-
   );
 }
 
-export default Profesionales
+export default Profesionales;
